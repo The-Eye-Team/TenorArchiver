@@ -9,6 +9,7 @@ import (
 	"sync"
 
 	"github.com/gocolly/colly"
+	"github.com/gocolly/colly/extensions"
 	"github.com/labstack/gommon/color"
 )
 
@@ -44,6 +45,8 @@ func extractMP4(URL, id string, wg *sync.WaitGroup) {
 	defer wg.Done()
 	var fileName, mp4URL string
 	c := colly.NewCollector()
+
+	extensions.RandomUserAgent(c)
 
 	c.OnHTML("head", func(e *colly.HTMLElement) {
 		e.ForEachWithBreak("meta", func(_ int, el *colly.HTMLElement) bool {
