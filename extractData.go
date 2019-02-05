@@ -111,7 +111,7 @@ func extractData(URL, id string, wg *sync.WaitGroup) {
 			color.Yellow(" [") +
 			color.Red(id) +
 			color.Yellow("] ") +
-			color.Red("No MP4 found at this URL!"))
+			color.Red("No data found at this URL!"))
 	}
 
 	worker.Wait()
