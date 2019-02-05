@@ -33,7 +33,7 @@ func parseArgs(args []string) {
 	stopID := parser.Int("", "stop-id", &argparse.Options{
 		Required: false,
 		Help:     "Last ID to scrape",
-		Default:  100000000})
+		Default:  10000000000})
 
 	concurrency := parser.Int("j", "concurrency", &argparse.Options{
 		Required: false,
