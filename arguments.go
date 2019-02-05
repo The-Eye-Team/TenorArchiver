@@ -12,6 +12,7 @@ var arguments = struct {
 	StartID     int
 	StopID      int
 	Concurrency int
+	Verbose     bool
 }{}
 
 func parseArgs(args []string) {
@@ -39,6 +40,11 @@ func parseArgs(args []string) {
 		Help:     "Concurrency",
 		Default:  4})
 
+	verbose := parser.Flag("v", "verbose", &argparse.Options{
+		Required: false,
+		Help:     "Verbose output",
+		Default:  false})
+
 	// Parse input
 	err := parser.Parse(args)
 	if err != nil {
@@ -53,4 +59,5 @@ func parseArgs(args []string) {
 	arguments.Concurrency = *concurrency
 	arguments.StartID = *startID
 	arguments.StopID = *stopID
+	arguments.Verbose = *verbose
 }

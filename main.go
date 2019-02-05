@@ -33,7 +33,7 @@ func crawl() {
 		worker.Add(1)
 		count++
 		id = strconv.Itoa(index)
-		go extractMP4("https://tenor.com/view/"+id, id, &worker)
+		go extractData("https://tenor.com/view/"+id, id, &worker)
 		if count == arguments.Concurrency {
 			worker.Wait()
 			count = 0
@@ -46,7 +46,9 @@ func main() {
 	parseArgs(os.Args)
 
 	// Create output directory
-	os.MkdirAll(arguments.Output, os.ModePerm)
+	os.MkdirAll(arguments.Output+"/MP4", os.ModePerm)
+	os.MkdirAll(arguments.Output+"/WebM", os.ModePerm)
+	os.MkdirAll(arguments.Output+"/GIF", os.ModePerm)
 
 	crawl()
 }
